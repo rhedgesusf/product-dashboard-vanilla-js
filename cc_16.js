@@ -20,7 +20,6 @@ function fetchProductsThen() {
     });
 }
 
-fetchProductsThen();
 
 /////////////////////////////////////////////
 // Task 3: Fetch products with async/await //
@@ -41,7 +40,9 @@ async function fetchProductsAsync() {
   }
 }
 
-fetchProductsAsync();
+//////////////////////////////////
+// Task 5: Display the Products //
+//////////////////////////////////
 
 function displayProducts(products) {
   const container = document.getElementById("product-container");
@@ -57,6 +58,17 @@ function displayProducts(products) {
   }
 }
 
+////////////////////////////////////
+// Task 5: Reusable Error Handler //
+////////////////////////////////////
+
 function handleError(error) {
   console.error("An error occured: ", error.message);
 }
+
+///////////////////////////////////////
+// Task 6: Call Your Fetch Functions //
+///////////////////////////////////////
+
+fetchProductsThen();
+fetchProductsAsync();
