@@ -45,16 +45,16 @@ fetchProductsAsync();
 
 function displayProducts(products) {
   const container = document.getElementById("product-container");
-  products.forEach((product) => {
+  for (let i = 0; i < 5 && i < products.length; i++) {
     const card = document.createElement("div");
     // set class and id
     card.setAttribute("class", "product-card");
-    card.innerHTML = `<div><h3>${product.fields.name}</h3>
-      <p>$${product.fields.price}</p>
-      <img src='${product.fields.image[0].url}' height='150'></img>
+    card.innerHTML = `<div><h3>${products[i].fields.name}</h3>
+      <p>$${products[i].fields.price}</p>
+      <img src='${products[i].fields.image[0].url}' height='150'></img>
       </div>`;
     container.appendChild(card);
-  });
+  }
 }
 
 function handleError(error) {
