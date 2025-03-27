@@ -16,7 +16,7 @@ function fetchProductsThen() {
       });
     })
     .catch((error) => {
-      console.error("There was a problem with the fetch operation:", error);
+      handleError(error);
     });
 }
 
@@ -58,5 +58,5 @@ function displayProducts(products) {
 }
 
 function handleError(error) {
-  console.error("Error:", error.message);
+  console.error("An error occured: ", error.message);
 }
