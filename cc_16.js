@@ -2,15 +2,20 @@
 // Task 2: Fetch Products with .then() //
 /////////////////////////////////////////
 
+
 function fetchProductsThen() {
+
+  // fetch products from URL destination
   fetch("https://www.course-api.com/javascript-store-products")
     .then((response) => {
+      // throw error if error retrieving products
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       return response.json();
     })
     .then((products) => {
+      // loop through products and log product name
       products.forEach((product) => {
         console.log(product.fields.name);
       });
@@ -27,14 +32,18 @@ function fetchProductsThen() {
 
 async function fetchProductsAsync() {
   try {
-    const response = await fetch(
-      "https://www.course-api.com/javascript-store-products"
-    );
+      // fetch products from URL destination
+    const response = await fetch("https://www.course-api.com/javascript-store-products");
+
+    // throw error if error retrieving products
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
     const products = await response.json();
+
+    // display products in webpage
     displayProducts(products);
+
   } catch (error) {
     handleError(error);
   }
@@ -45,17 +54,27 @@ async function fetchProductsAsync() {
 //////////////////////////////////
 
 function displayProducts(products) {
+
+  // get the container HTML element
   const container = document.getElementById("product-container");
-  for (let i = 0; i < 5 && i < products.length; i++) {
+
+  // display first 5 products
+  products.slice(0, 5).forEach(product => { 
+    // create div container for card
     const card = document.createElement("div");
-    // set class and id
+
+    // set class
     card.setAttribute("class", "product-card");
-    card.innerHTML = `<div><h3>${products[i].fields.name}</h3>
-      <p>$${products[i].fields.price}</p>
-      <img src='${products[i].fields.image[0].url}' height='150'></img>
+
+    // set the card details
+    card.innerHTML = `<div><h3>${product.fields.name}</h3>
+      <p>$${product.fields.price}</p>
+      <img src='${product.fields.image[0].url}' height='150'></img>
       </div>`;
+
+    // add the card to the container
     container.appendChild(card);
-  }
+  });
 }
 
 ////////////////////////////////////
